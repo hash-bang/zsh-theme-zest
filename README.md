@@ -23,7 +23,7 @@ ln -s zsh-theme-zest/zest.zsh-theme .
 ```
 ZSH_THEME="zest"
 
-# Add config options here if you have any
+# Add config options here if you have any (see below)
 ```
 
 
@@ -46,5 +46,10 @@ Set any of the `ZSH_THEME_*` options to customize the theme:
 |          | `ZSH_THEME_PATH_COLOR_FG`                  | `"#3B4252"` | Path segment foreground color                                                                                         |
 | Git      | `ZSH_THEME_GIT_COLOR_BG`                   | `"#434C5E"` | Git segment background color                                                                                          |
 |          | `ZSH_THEME_GIT_COLOR_FG`                   | `"#D8DEE9"` | Git segment foreground color                                                                                          |
-|          | `ZSH_THEME_GIT_MASTER_REPLACE_DIRTY        | `"🞱"`       | Rewrite "master" branches with this symbol if the branch is dirty                                                     |
-|          | `ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY     | `"●"`       | Rewrite "master" branches with this symbol if the branch is non-dirty                                                 |
+|          | `ZSH_THEME_GIT_MASTER_REPLACE_DIRTY`       | `"🞱"`       | Rewrite "master" branches with this symbol if the branch is dirty                                                     |
+|          | `ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY`    | `"●"`       | Rewrite "master" branches with this symbol if the branch is non-dirty                                                 |
+
+
+**Notes**:
+* All `ZSH_THEME_*_COLOR_{BG,FG}` values can be either a valid ANSI color (e.g. `black`, `yellow`, `gray`), a [256 integter color code](https://michurin.github.io/xterm256-color-picker/) (e.g. `33`, `19`) or a Hex code (e.g. `#434C5E`, `#ECBE7B`)
+* `ZSH_THEME_PATH_FORMAT` follows the ZSH formatting standard, see the man page for zsh for more details on possible values and their documentation
