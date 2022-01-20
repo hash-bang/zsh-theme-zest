@@ -25,3 +25,26 @@ ZSH_THEME="zest"
 
 # Add config options here if you have any
 ```
+
+
+Options
+=======
+Set any of the `ZSH_THEME_*` options to customize the theme:
+
+| Segment  | Option                                     | Default     | Description                                                                                                           |
+|----------|--------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------|
+| Status   | `ZSH_THEME_STATUS_ENABLE`                  | `"1"`       | Whether to enable the status segment (show the status of the last command + wheteher the user is root + pending jobs) |
+|          | `ZSH_THEME_STATUS_COLOR_BG`                | `"black"`   | Background color of the status segment                                                                                |
+|          | `ZSH_THEME_STATUS_COLOR_RETVAL_NONZERO_FG` | `"yellow"`  | Non-zero return forground color of the previous command                                                               |
+|          | `ZSH_THEME_STATUS_COLOR_ROOT_FG`           | `"yellow"`  | "User is root" foreground indicator color                                                                             |
+|          | `ZSH_THEME_STATUS_COLOR_JOBS_FG`           | `"cyan"`    | "There are background jobs" foreground indicator color                                                                |
+| Hostname | `ZSH_THEME_HOSTNAME_ENABLE`                | `"2"`       | Enable hostname segment: 0 - disable, 1 - always enable, 2 - only if the dialed into another server via SSH           |
+|          | `ZSH_THEME_HOSTNAME_COLOR_BG`              | `"#ECBE7B"` | Hostname segment foreground color                                                                                     |
+|          | `ZSH_THEME_HOSTNAME_COLOR_FG`              | `"#3B4252"` | Hostname segment background color                                                                                     |
+| Path     | `ZSH_THEME_PATH_FORMAT`                    | `"%~"`      | How to display paths, '%1d' - current directory only, '%d' - full path, '%~' - Shortened home full path               |
+|          | `ZSH_THEME_PATH_COLOR_BG`                  | `"#81A1C1"` | Path segment background color                                                                                         |
+|          | `ZSH_THEME_PATH_COLOR_FG`                  | `"#3B4252"` | Path segment foreground color                                                                                         |
+| Git      | `ZSH_THEME_GIT_COLOR_BG`                   | `"#434C5E"` | Git segment background color                                                                                          |
+|          | `ZSH_THEME_GIT_COLOR_FG`                   | `"#D8DEE9"` | Git segment foreground color                                                                                          |
+|          | `ZSH_THEME_GIT_MASTER_REPLACE_DIRTY        | `"🞱"`       | Rewrite "master" branches with this symbol if the branch is dirty                                                     |
+|          | `ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY     | `"●"`       | Rewrite "master" branches with this symbol if the branch is non-dirty                                                 |
