@@ -6,21 +6,22 @@ ZSH_THEME_SEGMENT_SEPARATOR='\ue0b0'
 
 # FIXME - This doesn't seem to work right - MC 2022-01-20
 ZSH_THEME_STATUS_ENABLE="1"
-ZSH_THEME_COLOR_STATUS_BG="black"
-ZSH_THEME_COLOR_STATUS_RETVAL_NONZERO_FG="yellow"
-ZSH_THEME_COLOR_STATUS_ROOT_FG="yellow"
-ZSH_THEME_COLOR_STATUS_JOBS_FG="cyan"
+ZSH_THEME_STATUS_COLOR_BG="black"
+ZSH_THEME_STATUS_COLOR_RETVAL_NONZERO_FG="yellow"
+ZSH_THEME_STATUS_COLOR_ROOT_FG="yellow"
+ZSH_THEME_STATUS_COLOR_JOBS_FG="cyan"
 
 # Enable hostname component: 0 - disable, 1 - always enable, 2 - only if the dialed into another server via SSH
 ZSH_THEME_HOSTNAME_ENABLE="1"
-ZSH_THEME_COLOR_HOSTNAME_BG="#ECBE7B"
-ZSH_THEME_COLOR_HOSTNAME_FG="#3B4252"
+ZSH_THEME_HOSTNAME_COLOR_BG="#ECBE7B"
+ZSH_THEME_HOSTNAME_COLOR_FG="#3B4252"
 
-ZSH_THEME_COLOR_PATH_BG="#81A1C1"
-ZSH_THEME_COLOR_PATH_FG="#3B4252"
+ZSH_THEME_PATH_FORMAT="%~"
+ZSH_THEME_PATH_COLOR_BG="#81A1C1"
+ZSH_THEME_PATH_COLOR_FG="#3B4252"
 
-ZSH_THEME_COLOR_GIT_BG="#434C5E"
-ZSH_THEME_COLOR_GIT_FG="#D8DEE9"
+ZSH_THEME_GIT_COLOR_BG="#434C5E"
+ZSH_THEME_GIT_COLOR_FG="#D8DEE9"
 # Rewrite "master" with a symbol instead of showing the name - dirty + non-dirty
 ZSH_THEME_GIT_MASTER_REPLACE_DIRTY='🞱'
 ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY='●'
@@ -59,17 +60,19 @@ build_prompt() {
 
 # prompt_status() - display status of last executed command {{{
 prompt_status() {
-	# Status:
-	# - was there an error
-	# - am I root
-	# - are there background jobs?
 	local SYMBOLS
 	SYMBOLS=()
-	[[ $RETVAL -ne 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_COLOR_STATUS_RETVAL_NONZERO_FG}%}✖"
-	[[ $UID -eq 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_COLOR_STATUS_ROOT_FG}%}⚡"
-	[[ $(jobs -l | wc -l) -gt 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_COLOR_STATUS_JOBS_FG}%}⚙"
 
-	[[ -n "$SYMBOLS" ]] && prompt_segment "$ZSH_THEME_COLOR_STATUS_BG" default "$SYMBOLS"
+	# Was there an error?
+	[[ $RETVAL -ne 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_STATUS_COLOR_RETVAL_NONZERO_FG}%}✖"
+
+	# Am I root?
+	[[ $UID -eq 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_STATUS_COLOR_ROOT_FG}%}⚡"
+
+	# Are there background jobs?
+	[[ $(jobs -l | wc -l) -gt 0 ]] && SYMBOLS+="%{%F{$ZSH_THEME_STATUS_COLOR_JOBS_FG}%}⚙"
+
+	[[ -n "$SYMBOLS" ]] && prompt_segment "$ZSH_THEME_STATUS_COLOR_BG" default "$SYMBOLS"
 }
 # }}}
 
@@ -93,14 +96,14 @@ prompt_user_hostname() {
 	local user=`whoami`
 
 	if [[ "$ZSH_THEME_HOSTNAME_ENABLE" == '1' || -n "$SSH_CLIENT" ]]; then
-		prompt_segment "$ZSH_THEME_COLOR_HOSTNAME_BG" "$ZSH_THEME_COLOR_HOSTNAME_FG" "$user@%m"
+		prompt_segment "$ZSH_THEME_HOSTNAME_COLOR_BG" "$ZSH_THEME_HOSTNAME_COLOR_FG" "$user@%m"
 	fi
 }
 # }}}
 
 # prompt_path() - Show the current directory {{{
 prompt_path() {
-	prompt_segment "$ZSH_THEME_COLOR_PATH_BG" "$ZSH_THEME_COLOR_PATH_FG" '%~'
+	prompt_segment "$ZSH_THEME_PATH_COLOR_BG" "$ZSH_THEME_PATH_COLOR_FG" "$ZSH_THEME_PATH_FORMAT"
 }
 # }}}
 
@@ -111,7 +114,7 @@ prompt_git() {
 		DIRTY=$(parse_git_dirty)
 		REF=$(git symbolic-ref HEAD 2> /dev/null)
 		REF="${REF/refs\/heads\//}"
-		prompt_segment "$ZSH_THEME_COLOR_GIT_BG" "$ZSH_THEME_COLOR_GIT_FG"
+		prompt_segment "$ZSH_THEME_GIT_COLOR_BG" "$ZSH_THEME_GIT_COLOR_FG"
 
 		if [[ ! -n "$ZSH_THEME_GIT_MASTER_REPLACE" && "$REF" == 'master' ]]; then
 			if [ -n $DIRTY ]; then
