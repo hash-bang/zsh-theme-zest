@@ -12,7 +12,7 @@ ZSH_THEME_STATUS_COLOR_ROOT_FG="yellow"
 ZSH_THEME_STATUS_COLOR_JOBS_FG="cyan"
 
 # Enable hostname component: 0 - disable, 1 - always enable, 2 - only if the dialed into another server via SSH
-ZSH_THEME_HOSTNAME_ENABLE="1"
+ZSH_THEME_HOSTNAME_ENABLE="2"
 ZSH_THEME_HOSTNAME_COLOR_BG="#ECBE7B"
 ZSH_THEME_HOSTNAME_COLOR_FG="#3B4252"
 
