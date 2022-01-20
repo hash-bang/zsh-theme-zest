@@ -5,14 +5,14 @@
 ZSH_THEME_SEGMENT_SEPARATOR='\ue0b0'
 
 # FIXME - This doesn't seem to work right - MC 2022-01-20
-ZSH_THEME_STATUS_DISABLE=1
+ZSH_THEME_STATUS_ENABLE="1"
 ZSH_THEME_COLOR_STATUS_BG="black"
 ZSH_THEME_COLOR_STATUS_RETVAL_NONZERO_FG="yellow"
 ZSH_THEME_COLOR_STATUS_ROOT_FG="yellow"
 ZSH_THEME_COLOR_STATUS_JOBS_FG="cyan"
 
 # Enable hostname component: 0 - disable, 1 - always enable, 2 - only if the dialed into another server via SSH
-ZSH_THEME_HOSTNAME_BG="1"
+ZSH_THEME_HOSTNAME_ENABLE="1"
 ZSH_THEME_COLOR_HOSTNAME_BG="#ECBE7B"
 ZSH_THEME_COLOR_HOSTNAME_FG="#3B4252"
 
@@ -46,7 +46,7 @@ CURRENT_BG='NONE'
 
 # build_prompt() - main prompt sequence builder {{{
 build_prompt() {
-	if [ "$ZSH_THEME_STATUS_DISABLE" != '1' ];then
+	if [[ "$ZSH_THEME_STATUS_ENABLE" == '1' ]]; then
 		RETVAL=$?
 		prompt_status
 	fi
@@ -92,7 +92,7 @@ prompt_segment() {
 prompt_user_hostname() {
 	local user=`whoami`
 
-	if [[ "$ZSH_THEME_HOSTNAME_BG" == 1 || -n "$SSH_CLIENT" ]]; then
+	if [[ "$ZSH_THEME_HOSTNAME_ENABLE" == '1' || -n "$SSH_CLIENT" ]]; then
 		prompt_segment "$ZSH_THEME_COLOR_HOSTNAME_BG" "$ZSH_THEME_COLOR_HOSTNAME_FG" "$user@%m"
 	fi
 }
