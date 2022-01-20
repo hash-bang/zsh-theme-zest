@@ -16,6 +16,7 @@ ZSH_THEME_HOSTNAME_ENABLE="2"
 ZSH_THEME_HOSTNAME_COLOR_BG="#ECBE7B"
 ZSH_THEME_HOSTNAME_COLOR_FG="#3B4252"
 
+# How to display paths, '%1d' - current directory only, '%d' - full path, '%~' - Shortened home full path (i.e. display `~` when the path starts with `$HOME`)
 ZSH_THEME_PATH_FORMAT="%~"
 ZSH_THEME_PATH_COLOR_BG="#81A1C1"
 ZSH_THEME_PATH_COLOR_FG="#3B4252"
