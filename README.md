@@ -5,15 +5,21 @@ A simple, functional theme for ZSH.
 Influenced by [zsh2000](https://github.com/consolemaverick/zsh2000), [agnoster's theme](https://gist.github.com/3712874) and [jeremyFreeAgent's theme](https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme).
 
 
+Previews
+--------
+
 Simple path displays relative to the `$HOME` directory:
+
 ![Simple path display](assets/1-path.png)
 
 
 Display the remote login, if present:
+
 ![Remote login display](assets/2-host.png)
 
 
 Icon to show suspended tasks:
+
 ![Suspended tasks display](assets/3-suspend.png)
 
 
