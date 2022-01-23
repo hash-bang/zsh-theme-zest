@@ -1,7 +1,8 @@
 # Colors can be:
 # - ANSI code: e.g. black, yellow, gray
 # - 256 color code: e.g. 33, 19 (see https://michurin.github.io/xterm256-color-picker/)
-# - HEX code: #434C5E
+#   Use `spectrum_ls` to get a list of valid colors
+# - HEX code: #434C5E (only ZSH@>=5.7)
 ZSH_THEME_SEGMENT_SEPARATOR='\ue0b0'
 
 ZSH_THEME_STATUS_ENABLE="1"
