@@ -67,6 +67,7 @@ Set any of the `ZSH_THEME_*` options to customize the theme:
 |          | `ZSH_THEME_GIT_COLOR_FG`                   | `"#D8DEE9"` | Git segment foreground color                                                                                          |
 |          | `ZSH_THEME_GIT_MASTER_REPLACE_DIRTY`       | `"🞱"`       | Rewrite "master" branches with this symbol if the branch is dirty                                                     |
 |          | `ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY`    | `"●"`       | Rewrite "master" branches with this symbol if the branch is non-dirty                                                 |
+|          | `ZSH_THEME_GIT_SYMBOLS_ENABLE`             | `"0"`       | Use the standard Oh-My-ZSH `git_prompt_status` helper to render Git status symbols                                    |
 
 
 **Notes**:

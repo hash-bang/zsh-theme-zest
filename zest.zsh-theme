@@ -3,6 +3,10 @@
 # - 256 color code: e.g. 33, 19 (see https://michurin.github.io/xterm256-color-picker/)
 #   Use `spectrum_ls` to get a list of valid colors
 # - HEX code: #434C5E (only ZSH@>=5.7)
+
+# Ensure that the RGB color handler is loaded, otherwise raise a public error
+zmodload zsh/nearcolor
+
 ZSH_THEME_SEGMENT_SEPARATOR='\ue0b0'
 
 ZSH_THEME_STATUS_ENABLE="1"
@@ -26,6 +30,8 @@ ZSH_THEME_GIT_COLOR_FG="#D8DEE9"
 # Rewrite "master" with a symbol instead of showing the name - dirty + non-dirty
 ZSH_THEME_GIT_MASTER_REPLACE_DIRTY='🞱'
 ZSH_THEME_GIT_MASTER_REPLACE_NONDIRTY='●'
+
+ZSH_THEME_GIT_SYMBOLS_ENABLE="0"
 # Symbols for each part of the Git prompt
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" ✭"
 ZSH_THEME_GIT_PROMPT_STASHED=' ⚑'
@@ -125,7 +131,7 @@ prompt_git() {
 			fi
 		fi
 
-		if [ "$ZSH_2000_DISABLE_GIT_STATUS" != "true" ];then
+		if [[ "$ZSH_THEME_GIT_SYMBOLS_ENABLE" == '1' ]]; then
 			echo -n "${REF}${DIRTY}"$(git_prompt_status)
 		else
 			echo -n "${REF}${DIRTY}"
