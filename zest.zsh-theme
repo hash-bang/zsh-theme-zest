@@ -67,6 +67,12 @@ build_prompt() {
 }
 # }}}
 
+# util_git_is_dirty() - return if the current directory has chanegs {{{
+util_git_is_dirty() {
+	echo `git diff --quiet --exit-code; echo "$?"`
+}
+# }}}
+
 # prompt_status() - display status of last executed command {{{
 prompt_status() {
 	local SYMBOLS
@@ -120,13 +126,13 @@ prompt_path() {
 prompt_git() {
 	local ref dirty
 	if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-		DIRTY=$(parse_git_dirty)
+		IS_DIRTY="$(util_git_is_dirty)"
 		REF=$(git symbolic-ref HEAD 2> /dev/null)
 		REF="${REF/refs\/heads\//}"
 		prompt_segment "$ZSH_THEME_GIT_COLOR_BG" "$ZSH_THEME_GIT_COLOR_FG"
 
 		if [[ "$ZSH_THEME_GIT_REWRITE_REPLACE_ENABLE" == "1" && "${IFS}${ZSH_THEME_GIT_REWRITE_REPLACE_BRANCHES[*]}${IFS}" =~ "${IFS}${REF}${IFS}" ]]; then
-			if [ -n $DIRTY ]; then
+			if [[ "$IS_DIRTY" == "1" ]]; then
 				REF="$ZSH_THEME_GIT_REWRITE_REPLACE_DIRTY"
 			else
 				REF="$ZSH_THEME_GIT_REWRITE_REPLACE_NONDIRTY"
