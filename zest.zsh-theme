@@ -126,7 +126,7 @@ prompt_path() {
 prompt_git() {
 	local ref dirty
 	if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-		IS_DIRTY="$(util_git_is_dirty)"
+		IS_DIRTY="${util_git_is_dirty}"
 		REF=$(git symbolic-ref HEAD 2> /dev/null)
 		REF="${REF/refs\/heads\//}"
 		prompt_segment "$ZSH_THEME_GIT_COLOR_BG" "$ZSH_THEME_GIT_COLOR_FG"
